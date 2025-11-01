@@ -1,0 +1,73 @@
+{
+  "Technical Skills": [
+    { "name": "C#", "icon": "code" },
+    { "name": ".NET Framework", "icon": "layers" },
+    { "name": ".NET Core", "icon": "widgets" },
+    { "name": "ASP.NET MVC", "icon": "web" },
+    { "name": "ASP.NET Web API", "icon": "api" },
+    { "name": "RESTful Services", "icon": "sync_alt" },
+    { "name": "LINQ", "icon": "data_object" },
+    { "name": "OOP", "icon": "psychology" },
+    { "name": "SOLID Principles", "icon": "balance" },
+    { "name": "JavaScript", "icon": "javascript" },
+    { "name": "TypeScript", "icon": "code_blocks" },
+    { "name": "Angular", "icon": "radar" },
+    { "name": "HTML5", "icon": "html" },
+    { "name": "CSS3", "icon": "css" },
+    { "name": "Entity Framework", "icon": "database" }
+  ],
+
+  "Architecture & System Design": [
+    { "name": "Microservices Architecture", "icon": "hub" },
+    { "name": "Distributed Systems", "icon": "share" },
+    { "name": "Design Patterns", "icon": "category" },
+    { "name": "System Design", "icon": "schema" },
+    { "name": "Enterprise Application Architecture", "icon": "business" },
+    { "name": "Clean Architecture", "icon": "architecture" },
+    { "name": "Scalability", "icon": "trending_up" },
+    { "name": "High Availability", "icon": "backup" },
+    { "name": "Performance Optimization", "icon": "speed" },
+    { "name": "API Design", "icon": "api" }
+  ],
+
+  "Cloud & DevOps": [
+    { "name": "Docker", "icon": "deployed_code" },
+    { "name": "CI/CD Pipelines", "icon": "route" },
+    { "name": "Azure DevOps", "icon": "cloud" },
+    { "name": "GitHub Actions", "icon": "bolt" },
+    { "name": "Docker Containers", "icon": "inventory_2" },
+    { "name": "Application Monitoring", "icon": "monitoring" }
+  ],
+
+  "Databases & Storage": [
+    { "name": "SQL Server", "icon": "dns" },
+    { "name": "T-SQL", "icon": "terminal" },
+    { "name": "MySQL", "icon": "table_chart" },
+    { "name": "Database Design", "icon": "draw" },
+    { "name": "Database Performance Tuning", "icon": "speed" },
+    { "name": "ORM Tools", "icon": "data_array" }
+  ],
+
+  "Software Development & Tools": [
+    { "name": "GitHub Copilot", "icon": "smart_toy" },
+    { "name": "Git", "icon": "commit" },
+    { "name": "GitHub", "icon": "hub" },
+    { "name": "Agile", "icon": "task_alt" },
+    { "name": "Scrum", "icon": "view_kanban" },
+    { "name": "Unit Testing", "icon": "fact_check" },
+    { "name": "Integration Testing", "icon": "link" },
+    { "name": "Automated Testing", "icon": "auto_awesome" },
+    { "name": "SDLC Management", "icon": "repeat" },
+    { "name": "Code Reviews", "icon": "rate_review" }
+  ],
+
+  "Leadership & Delivery": [
+    { "name": "Technical Leadership", "icon": "military_tech" },
+    { "name": "Team Mentoring", "icon": "diversity_3" },
+    { "name": "Requirements Analysis", "icon": "assignment" },
+    { "name": "Stakeholder Collaboration", "icon": "groups" },
+    { "name": "Sprint Planning", "icon": "calendar_month" },
+    { "name": "Cross Functional Coordination", "icon": "hub" },
+    { "name": "Solution Delivery", "icon": "task" }
+  ]
+}
