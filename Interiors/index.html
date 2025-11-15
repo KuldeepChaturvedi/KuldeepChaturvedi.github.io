@@ -26,6 +26,13 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
+<div id="imageViewer" class="image-viewer">
+    <span id="closeViewer">&times;</span>
+    <img id="viewerImage" src="">
+    <button id="prevImg" class="nav-btn">&#10094;</button>
+    <button id="nextImg" class="nav-btn">&#10095;</button>
+</div>
+
 <body>
     <!-- Hero Section -->
     <section id="hero" class="hero">
@@ -35,7 +42,7 @@
         </div>
 
         <div class="hero-content">
-            <h1 class="hero-title animate-fade-in">Crafting Beautiful Spaces</h1>
+            <h1 class="hero-title animate-fade-in">Shatakshi Chaturvedi</h1>
             <p class="hero-subtitle">Transforming interiors with thoughtful design and creative vision</p>
             <div class="hero-buttons">
                 <button class="btn btn-primary" onclick="scrollToSection('portfolio')">View Portfolio</button>
@@ -71,7 +78,8 @@
                         </svg>
                     </div>
                     <h3 class="stat-title">Education</h3>
-                    <p class="stat-text">Bachelor's in Interior Design</p>
+                    <p class="stat-text">Bachelor's in Business Administration</p>
+                    <p class="stat-text">Interior Designer Certifications</p>
                 </div>
 
                 <div class="stat-card">
@@ -101,16 +109,15 @@
 
             <div class="about-content">
                 <p class="about-text">
-                    As a recent graduate with hands-on internship experience, I bring fresh perspectives
-                    and contemporary design sensibilities to every project. My approach combines
-                    functionality with aesthetic beauty, creating spaces that truly resonate with their
-                    inhabitants.
+                    I’m an aspiring interior designer currently completing an online interior design course, which is
+                    complemented by five months of hands-on internship experience.
                 </p>
                 <p class="about-text">
-                    During my internship, I had the opportunity to work on diverse projects ranging from
-                    cozy residential spaces to modern commercial environments. I specialize in creating
-                    harmonious color palettes, optimizing spatial layouts, and selecting furnishings that
-                    reflect each client's unique personality and needs.
+                    During my internship, I had the opportunity to gain practical skills in key areas such as client
+                    communication, space planning, and 3D visualization. I worked with design tools like SketchUp and
+                    AutoCAD to create detailed and realistic representations of spaces. My approach to design is
+                    cantered around creating functional, aesthetically pleasing environments that balance modern design
+                    trends with the unique needs and preferences of each client.
                 </p>
             </div>
         </div>
@@ -120,7 +127,7 @@
     <section id="portfolio" class="section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Portfolio</h2>
+                <h2 class="section-title">3D Designs</h2>
                 <p class="section-description">
                     A curated selection of projects from my internship and academic work
                 </p>
@@ -129,13 +136,12 @@
             <div class="portfolio-grid">
                 <div class="portfolio-card">
                     <div class="portfolio-image-wrapper">
-                        <img src="assets/project-1.jpg" alt="Modern Bedroom Design" class="portfolio-image">
+                        <img src="assets/project-1.jpg" alt="Modern Ottoman Design" class="portfolio-image">
                         <div class="portfolio-overlay">
                             <div class="portfolio-details">
                                 <span class="portfolio-category">Residential</span>
-                                <h3 class="portfolio-title">Modern Bedroom Design</h3>
-                                <p class="portfolio-description">Contemporary bedroom with warm earth tones and
-                                    minimalist aesthetics</p>
+                                <h3 class="portfolio-title">Modern Ottoman Design</h3>
+                                <p class="portfolio-description">A little ottoman, endless possibilities.</p>
                             </div>
                         </div>
                     </div>
@@ -143,13 +149,12 @@
 
                 <div class="portfolio-card">
                     <div class="portfolio-image-wrapper">
-                        <img src="assets/project-2.jpg" alt="Elegant Dining Space" class="portfolio-image">
+                        <img src="assets/project-2.jpg" alt="Elegant Wardrobe Design" class="portfolio-image">
                         <div class="portfolio-overlay">
                             <div class="portfolio-details">
                                 <span class="portfolio-category">Residential</span>
-                                <h3 class="portfolio-title">Elegant Dining Space</h3>
-                                <p class="portfolio-description">Sophisticated dining room featuring natural materials
-                                    and modern lighting</p>
+                                <h3 class="portfolio-title">Elegant Wardrobe Design</h3>
+                                <p class="portfolio-description">A timeless wardrobe for a timeless you</p>
                             </div>
                         </div>
                     </div>
@@ -157,13 +162,12 @@
 
                 <div class="portfolio-card">
                     <div class="portfolio-image-wrapper">
-                        <img src="assets/project-3.jpg" alt="Home Office Setup" class="portfolio-image">
+                        <img src="assets/project-3.jpg" alt="Modren Kitchen Counter" class="portfolio-image">
                         <div class="portfolio-overlay">
                             <div class="portfolio-details">
                                 <span class="portfolio-category">Residential</span>
-                                <h3 class="portfolio-title">Home Office Setup</h3>
-                                <p class="portfolio-description">Functional workspace designed for productivity and
-                                    comfort</p>
+                                <h3 class="portfolio-title">Modren Kitchen Counter</h3>
+                                <p class="portfolio-description">asdhashdlk</p>
                             </div>
                         </div>
                     </div>
@@ -171,13 +175,12 @@
 
                 <div class="portfolio-card">
                     <div class="portfolio-image-wrapper">
-                        <img src="assets/project-4.jpg" alt="Cozy Reading Nook" class="portfolio-image">
+                        <img src="assets/project-4.jpg" alt="Modern Coffee Table" class="portfolio-image">
                         <div class="portfolio-overlay">
                             <div class="portfolio-details">
                                 <span class="portfolio-category">Residential</span>
-                                <h3 class="portfolio-title">Cozy Reading Nook</h3>
-                                <p class="portfolio-description">Intimate reading corner with warm ambiance and
-                                    thoughtful details</p>
+                                <h3 class="portfolio-title">Modern Coffee Table</h3>
+                                <p class="portfolio-description">Where conversations begin and comfort settles.</p>
                             </div>
                         </div>
                     </div>
@@ -265,7 +268,7 @@
                             <circle cx="11" cy="11" r="2" />
                         </svg>
                     </div>
-                    <h3 class="skill-title">CAD & 3D Modeling</h3>
+                    <h3 class="skill-title">CAD & 2D Modeling</h3>
                     <p class="skill-text">Creating detailed visualizations and renderings</p>
                 </div>
 
@@ -285,8 +288,22 @@
         </div>
     </section>
 
+    <!-- Portfolio Section -->
+    <section id="design2d" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">2D Designs</h2>
+                <p class="section-description">
+                    Thoughtfully drafted plans highlighting space planning, furniture layouts, and lighting concepts
+                </p>
+            </div>
+
+            <div id="design2d-grid" class="portfolio-grid"></div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
-    <section id="contact" class="section">
+    <section id="contact" class="section section-cream">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Get in Touch</h2>
@@ -307,11 +324,11 @@
                         </div>
                         <div>
                             <h3 class="contact-card-title">Email</h3>
-                            <p class="contact-card-text">designer@example.com</p>
+                            <p class="contact-card-text">shatakshichaturvedi19@gmail.com</p>
                         </div>
                     </div>
 
-                    <div class="contact-card">
+                    <!-- <div class="contact-card">
                         <div class="contact-icon contact-icon-secondary">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
@@ -321,10 +338,12 @@
                         </div>
                         <div>
                             <h3 class="contact-card-title">Phone</h3>
-                            <p class="contact-card-text">+1 (555) 123-4567</p>
+                            <p class="contact-card-text"></p>
                         </div>
-                    </div>
+                    </div> -->
+                </div>
 
+                <div class="contact-info">
                     <div class="contact-card">
                         <div class="contact-icon contact-icon-accent">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -335,12 +354,12 @@
                         </div>
                         <div>
                             <h3 class="contact-card-title">Location</h3>
-                            <p class="contact-card-text">New York, NY</p>
+                            <p class="contact-card-text">Jaipur, Rajasthan, IN</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="contact-form-wrapper">
+                <!-- <div class="contact-form-wrapper">
                     <form id="contactForm" class="contact-form">
                         <div class="form-group">
                             <label for="name" class="form-label">Name</label>
@@ -362,7 +381,7 @@
 
                         <button type="submit" class="btn btn-primary btn-full">Send Message</button>
                     </form>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
@@ -371,7 +390,7 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <p class="footer-text">© <span id="currentYear"></span> Interior Design Portfolio. All rights reserved.
+                <!-- <p class="footer-text"> -->
                 </p>
                 <div class="footer-links">
                     <a href="#about" class="footer-link">About</a>

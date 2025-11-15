@@ -8,31 +8,31 @@ function scrollToSection(sectionId) {
     }
 }
 
-// ===================================
-// Contact Form Handling
-// ===================================
-const contactForm = document.getElementById('contactForm');
+// // ===================================
+// // Contact Form Handling
+// // ===================================
+// const contactForm = document.getElementById('contactForm');
 
-contactForm.addEventListener('submit', function(e) {
-    e.preventDefault();
+// contactForm.addEventListener('submit', function(e) {
+//     e.preventDefault();
     
-    // Get form values
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
+//     // Get form values
+//     const name = document.getElementById('name').value;
+//     const email = document.getElementById('email').value;
+//     const message = document.getElementById('message').value;
     
-    // Basic validation (HTML5 handles most of this)
-    if (name && email && message) {
-        // Show toast notification
-        showToast();
+//     // Basic validation (HTML5 handles most of this)
+//     if (name && email && message) {
+//         // Show toast notification
+//         showToast();
         
-        // Reset form
-        contactForm.reset();
+//         // Reset form
+//         contactForm.reset();
         
-        // In a real application, you would send this data to a server
-        console.log('Form submitted:', { name, email, message });
-    }
-});
+//         // In a real application, you would send this data to a server
+//         console.log('Form submitted:', { name, email, message });
+//     }
+// });
 
 // ===================================
 // Toast Notification
@@ -47,10 +47,6 @@ function showToast() {
     }, 3000);
 }
 
-// ===================================
-// Set Current Year in Footer
-// ===================================
-document.getElementById('currentYear').textContent = new Date().getFullYear();
 
 // ===================================
 // Scroll Animations (Optional Enhancement)
@@ -115,3 +111,74 @@ document.querySelectorAll('.portfolio-card').forEach(card => {
 // ===================================
 console.log('%c👋 Welcome to my Portfolio!', 'color: #8B6F47; font-size: 20px; font-weight: bold;');
 console.log('%cInterested in the code? Feel free to reach out!', 'color: #7A9B76; font-size: 14px;');
+
+
+// ===============================
+// Auto-load 2D Designs from folder
+// ===============================
+const design2dGrid = document.getElementById("design2d-grid");
+const designsFolder = "assets/2d-designs/";
+const totalImages = 13; // <-- change this to how many images are in folder
+
+let imageList = [];
+
+// Load images automatically
+for (let i = 1; i <= totalImages; i++) {
+    const imgPath = `${designsFolder}${i}.png`;
+
+    const card = document.createElement("div");
+    card.classList.add("portfolio-card");
+
+    card.innerHTML = `
+        <div class="portfolio-image-wrapper">
+            <img src="${imgPath}" class="portfolio-image" loading="lazy">
+        </div>
+    `;
+
+    design2dGrid.appendChild(card);
+    imageList.push(imgPath);
+
+    // Click to open viewer
+    card.addEventListener("click", () => openViewer(i - 1));
+}
+
+// ===============================
+// Image Viewer (Lightbox)
+// ===============================
+const viewer = document.getElementById("imageViewer");
+const viewerImg = document.getElementById("viewerImage");
+const closeViewerBtn = document.getElementById("closeViewer");
+const nextBtn = document.getElementById("nextImg");
+const prevBtn = document.getElementById("prevImg");
+
+let currentIndex = 0;
+
+function openViewer(index) {
+    currentIndex = index;
+    viewerImg.src = imageList[currentIndex];
+    viewer.style.display = "flex";
+}
+
+function closeViewer() {
+    viewer.style.display = "none";
+}
+
+function showNext() {
+    currentIndex = (currentIndex + 1) % imageList.length;
+    viewerImg.src = imageList[currentIndex];
+}
+
+function showPrev() {
+    currentIndex = (currentIndex - 1 + imageList.length) % imageList.length;
+    viewerImg.src = imageList[currentIndex];
+}
+
+// Buttons
+closeViewerBtn.onclick = closeViewer;
+nextBtn.onclick = showNext;
+prevBtn.onclick = showPrev;
+
+// Close on background click
+viewer.addEventListener("click", (e) => {
+    if (e.target === viewer) closeViewer();
+});
