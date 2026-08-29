@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>QuizPop Kids — POC</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#5B2CE0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <span class="mark"><span class="star">★</span> QuizPop Kids</span>
+      <span class="tag">POC — AI-powered exams for kids</span>
+    </div>
+    <nav class="tabs" role="tablist">
+      <button class="tab-btn active" data-tab="library" role="tab" aria-selected="true"><span class="num">1</span>Prompt Library</button>
+      <button class="tab-btn" data-tab="import" role="tab" aria-selected="false"><span class="num">2</span>Import Exam</button>
+      <button class="tab-btn" data-tab="exam" role="tab" aria-selected="false"><span class="num">3</span>Live Exam</button>
+      <button class="tab-btn" data-tab="results" role="tab" aria-selected="false"><span class="num">4</span>Results</button>
+    </nav>
+  </div>
+</div>
+
+<div class="app">
+
+  <!-- 1. PROMPT LIBRARY -->
+  <section class="panel active" id="panel-library">
+    <div class="card">
+      <h2>🧩 Build a prompt</h2>
+      <p class="muted">Fill in the blanks, copy the prompt, and paste it into ChatGPT or Gemini. It will reply with ready-to-use exam JSON.</p>
+      <div class="grid2">
+        <div>
+          <label>Subject</label>
+          <input type="text" id="p-subject" value="Math">
+        </div>
+        <div>
+          <label>Grade / age level</label>
+          <input type="text" id="p-grade" value="Grade 2 (age 7)">
+        </div>
+        <div>
+          <label>Topic (optional)</label>
+          <input type="text" id="p-topic" value="Addition and subtraction">
+        </div>
+        <div>
+          <label>Difficulty</label>
+          <select id="p-difficulty">
+            <option>easy</option>
+            <option>medium</option>
+            <option>hard</option>
+          </select>
+        </div>
+        <div>
+          <label>Number of questions</label>
+          <input type="number" id="p-count" value="8" min="1" max="30">
+        </div>
+        <div>
+          <label>Options per question</label>
+          <input type="number" id="p-options" value="4" min="2" max="6">
+        </div>
+        <div>
+          <label>Marks per question</label>
+          <input type="number" id="p-marks" value="1" min="1">
+        </div>
+        <div>
+          <label>Seconds per question</label>
+          <input type="number" id="p-seconds" value="30" min="5">
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="btn-build-prompt">✨ Generate prompt</button>
+        <button class="btn btn-ghost" id="btn-copy-prompt">📋 Copy prompt</button>
+      </div>
+      <p class="muted" id="copy-msg" style="display:none;color:#1F8A4D;font-weight:800;">Copied! Paste it into ChatGPT or Gemini.</p>
+      <pre class="preview" id="prompt-preview"></pre>
+    </div>
+
+    <div class="card">
+      <h3 style="font-size:16px;">👉 Next step</h3>
+      <p class="muted">Once the AI replies with JSON, go to <strong>2. Import Exam</strong> and paste it in.</p>
+    </div>
+  </section>
+
+  <!-- 2. IMPORT -->
+  <section class="panel" id="panel-import">
+    <div class="card">
+      <h2>📥 Paste your exam JSON</h2>
+      <p class="muted">Paste the JSON your AI chatbot generated. Or try a demo set below.</p>
+      <div class="demo-row" style="margin-bottom:10px;">
+        <button class="chip" data-demo="math">🧮 Demo: Math (perQuestion timer)</button>
+        <button class="chip" data-demo="animals">🐘 Demo: Animals (total timer)</button>
+      </div>
+      <textarea id="json-input" placeholder="Paste JSON here..."></textarea>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="btn-load-json">✅ Load &amp; validate</button>
+      </div>
+      <div id="import-feedback"></div>
+    </div>
+  </section>
+
+  <!-- 3. EXAM -->
+  <section class="panel" id="panel-exam">
+    <div class="card" id="exam-empty">
+      <p class="muted">No exam loaded yet. Go to <strong>2. Import Exam</strong> first.</p>
+    </div>
+    <div id="exam-live" style="display:none;">
+      <div class="card">
+        <div class="exam-head">
+          <div>
+            <h2 id="exam-title" style="font-size:19px;"></h2>
+            <span class="muted" id="exam-subtitle"></span>
+          </div>
+          <div class="timer-badge" id="timer-badge">--</div>
+          <div id="timer-announce" role="status" aria-live="polite" aria-atomic="true" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);"></div>
+        </div>
+        <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+      </div>
+
+      <div class="card">
+        <div class="trail" id="trail"></div>
+        <div class="q-card">
+          <div class="q-meta" id="q-meta"></div>
+          <div class="q-text" id="q-text"></div>
+          <div class="options" id="q-options" role="radiogroup" aria-label="Answer options"></div>
+        </div>
+        <div class="exam-foot">
+          <button class="flag-toggle" id="flag-btn" aria-pressed="false">🚩 Flag for review</button>
+          <div class="btn-row" style="margin-top:0;">
+            <button class="btn btn-ghost" id="prev-btn" aria-label="Go to previous question">Back</button>
+            <button class="btn btn-primary" id="next-btn" aria-label="Go to next question">Next ➜</button>
+            <button class="btn btn-coral" id="submit-btn" style="display:none;" aria-label="Submit exam">🎉 Submit exam</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. RESULTS -->
+  <section class="panel" id="panel-results">
+    <div class="card" id="results-empty">
+      <p class="muted">No results yet — finish an exam to see your score here.</p>
+    </div>
+    <div id="results-live" style="display:none;">
+      <div class="score-hero">
+        <div class="stars" id="score-stars">⭐⭐⭐</div>
+        <div class="big" id="score-big">0 / 0</div>
+        <div class="msg" id="score-msg">Great job!</div>
+      </div>
+      <div id="review-list"></div>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="retry-btn">🔁 Try again</button>
+      </div>
+      <div class="history-heading">
+        <h3>📋 Past Results</h3>
+        <button class="btn-ghost-sm" id="clear-history-btn">🗑 Clear history</button>
+      </div>
+      <div id="history-list"></div>
+    </div>
+  </section>
+
+  <!-- Confirmation Modal -->
+  <div class="modal-overlay" id="submit-modal" hidden>
+    <div class="modal-card">
+      <div class="modal-title">Ready to submit?</div>
+      <div class="modal-stats">
+        <div class="modal-stat-row">
+          <span>✅ Answered:</span>
+          <span class="stat-num" id="modal-answered">—</span>
+        </div>
+        <div class="modal-stat-row">
+          <span>⬜ Unanswered:</span>
+          <span class="stat-num" id="modal-unanswered">—</span>
+        </div>
+        <div class="modal-stat-row">
+          <span>🚩 Flagged:</span>
+          <span class="stat-num" id="modal-flagged">—</span>
+        </div>
+      </div>
+      <div class="modal-btn-row">
+        <button class="btn btn-ghost" id="modal-back-btn">Go back and review</button>
+        <button class="btn btn-coral" id="modal-submit-btn">Submit now 🎉</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="js/tabs.js"></script>
+<script src="js/prompt.js"></script>
+<script src="js/import.js"></script>
+<script src="js/exam.js"></script>
+<script src="js/results.js"></script>
+</body>
+</html>
