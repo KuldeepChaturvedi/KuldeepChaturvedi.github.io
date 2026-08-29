@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>QuizPop Kids — POC</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#5B2CE0">
@@ -38,15 +38,15 @@
       <div class="grid2">
         <div>
           <label>Subject</label>
-          <input type="text" id="p-subject" value="Math">
+          <input type="text" id="p-subject" value="Math" autocorrect="off" autocapitalize="off">
         </div>
         <div>
           <label>Grade / age level</label>
-          <input type="text" id="p-grade" value="Grade 2 (age 7)">
+          <input type="text" id="p-grade" value="Grade 2 (age 7)" autocorrect="off" autocapitalize="off">
         </div>
         <div>
           <label>Topic (optional)</label>
-          <input type="text" id="p-topic" value="Addition and subtraction">
+          <input type="text" id="p-topic" value="Addition and subtraction" autocorrect="off" autocapitalize="off">
         </div>
         <div>
           <label>Difficulty</label>
@@ -96,7 +96,12 @@
         <button class="chip" data-demo="math">🧮 Demo: Math (perQuestion timer)</button>
         <button class="chip" data-demo="animals">🐘 Demo: Animals (total timer)</button>
       </div>
-      <textarea id="json-input" placeholder="Paste JSON here..."></textarea>
+      <textarea id="json-input" placeholder="Paste JSON here..."
+        autocorrect="off"
+        autocapitalize="off"
+        autocomplete="off"
+        spellcheck="false"
+        inputmode="none"></textarea>
       <div class="btn-row">
         <button class="btn btn-primary" id="btn-load-json">✅ Load &amp; validate</button>
       </div>

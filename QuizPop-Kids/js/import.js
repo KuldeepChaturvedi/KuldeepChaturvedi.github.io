@@ -51,17 +51,26 @@ document.getElementById('btn-load-json').addEventListener('click', ()=>{
   let raw = document.getElementById('json-input').value.trim();
   const fb = document.getElementById('import-feedback');
   fb.innerHTML = '';
+
+  // Normalize curly/smart quotes inserted by mobile keyboards and AI chatbots
+  raw = raw
+    .replace(/[“”„‟]/g, '"')
+    .replace(/[‘’‚‛]/g, "'")
+    .replace(/[ʹʻʼʽʾʿ]/g, "'");
+
+  // Strip markdown code fences
   const stripped = raw.replace(/^```(?:json)?\s*/i, '').replace(/\s*```\s*$/, '').trim();
   const fencesRemoved = stripped !== raw;
   if(fencesRemoved){
     raw = stripped;
     fb.innerHTML = '<div class="success-box" style="background:#FFF8E7;border-color:#FFD400;color:#6B5000;">✂️ Markdown code fences were automatically removed before parsing.</div>';
   }
+
   let parsed;
   try{
     parsed = JSON.parse(raw);
   }catch(e){
-    fb.innerHTML = `<div class="error-box">Couldn't parse JSON: ${e.message}</div>`;
+    fb.innerHTML = `<div class="error-box">Couldn't parse JSON: ${e.message}<br><small style="font-weight:600;opacity:.8;">Tip: copy the JSON again directly from the chat — avoid forwarding via SMS or email which can corrupt quotes.</small></div>`;
     return;
   }
   const err = validateExam(parsed);
