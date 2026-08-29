@@ -1,22 +1,23 @@
   :root{
-    --purple:#3D2A8C;       /* headings / ink — vivid, not muddy */
-    --navy-bg:#5B2CE0;      /* header band — electric violet */
-    --navy-bg2:#FF3D81;     /* header gradient end — hot pink */
-    --cream:#FFFFFF;        /* page background */
+    --purple:#3D2A8C;
+    --navy-bg:#5B2CE0;
+    --navy-bg2:#FF3D81;
+    --cream:#FFFFFF;
     --card:#FFFFFF;
-    --yellow:#FFD400;       /* primary accent — pure sunshine */
+    --yellow:#FFD400;
     --yellow-shadow:#E0A800;
-    --pink:#FF3D81;         /* secondary accent — hot pink */
+    --pink:#FF3D81;
     --pink-shadow:#D40D5C;
-    --sky:#00B8F5;          /* tertiary accent — bright cyan-blue */
+    --sky:#00B8F5;
     --sky-shadow:#0089C4;
-    --green:#22D07A;        /* success — vivid grass green */
+    --green:#22D07A;
     --green-shadow:#0FAE60;
-    --orange:#FF7A1A;       /* extra accent for variety */
+    --orange:#FF7A1A;
     --line:#D8CCFF;
     --radius:22px;
   }
   *{box-sizing:border-box;}
+  [hidden]{display:none!important;}
   html,body{margin:0;padding:0;}
   body{
     background:var(--cream);
