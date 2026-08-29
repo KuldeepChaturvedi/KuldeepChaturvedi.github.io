@@ -51,6 +51,12 @@ document.getElementById('btn-load-json').addEventListener('click', ()=>{
   let raw = document.getElementById('json-input').value.trim();
   const fb = document.getElementById('import-feedback');
   fb.innerHTML = '';
+
+  // Normalize curly/smart quotes to straight ASCII quotes (common when copying from AI chatbots on mobile)
+  raw = raw
+    .replace(/[“”]/g, '"')
+    .replace(/[‘’]/g, "'");
+
   const stripped = raw.replace(/^```(?:json)?\s*/i, '').replace(/\s*```\s*$/, '').trim();
   const fencesRemoved = stripped !== raw;
   if(fencesRemoved){
